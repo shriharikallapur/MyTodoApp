@@ -3,26 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Todo App</title>
+  <title>Document</title>
   <link rel="stylesheet" href="/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <div class="w-scren h-screen flex">
-    <div class="min-w-[17rem] bg-[#2e2e2e]">
+  <div class='w-screen h-screen flex'>
+    <div class='lg:w-1/5 w-0 h-[100vh] bg-gray-900 md:block hidden'>
       <p class="w-full text-2xl font-bold text-[#FFFFFF] my-[0.5rem] px-7">My Lists</p>
-      <ul class="list-disc w-full h-[44rem] ps-[2rem]
-       overflow-y-auto" data-lists></ul>
+      <nav>
+        <ul class='list-disc w-full h-[44rem] ps-[2rem]
+        overflow-y-auto' data-lists-dui></ul>
+      </nav>
       <form 
         action="" 
-        data-mainListForm 
+        data-mainListForm-dui
         class="w-full px-5 mainListForm"
       >
         <div class="flex fixed bottom-0">
           <p class="text-2xl text-[#FFFFFF] my-auto">+</p>
           <input 
             type="text" 
-            data-addNewList 
+            data-addNewList-dui
             class="h-[2rem] text-[#FFFFFF] border-0 border-b-2 border-[#ffffff77] bg-transparent my-[1rem] mx-[1.5rem] p-0 focus-visible:outline-none placeholder:text-[#ffffff77] addNewList"
             placeholder="new list name"
           >        
@@ -30,36 +32,67 @@
       </form>
     </div>
 
-    <div class="w-full flex bg-[#00301edb]">
-      <div class="m-auto" data-listViewer>
-        <div class="w-[60rem] h-[40rem] mt-5 rounded-lg bg-[#FFFFFF] listInnerViewer">
-          <div class="flex px-[1rem] rounded-t-lg justify-between bg-[#e0e0e0]">
-            <h2 class="my-auto text-xl font-semibold" data-listName></h2>
-            <p class="my-[1.5rem]" data-listCount></p>
+    <div class='lg:w-4/5 w-full'>
+      <nav class='w-full h-[6%] border-b-2 flex'>
+        <button type="button" class='navbar-burger p-[0.625rem] lg:hidden block'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-[1.5rem] h-[1.5rem]">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+        </button>
+        <p class="m-auto text-xl font-medium">Todo App</p>
+      </nav>
+      <div class="navbar-menu bg-gray-900 hidden">
+        <p class="w-full text-2xl font-bold text-[#FFFFFF] my-[0.5rem] px-7">My Lists</p>
+        <nav>
+          <ul class='list-disc w-full h-[44rem] ps-[2rem]
+          overflow-y-auto' data-lists-mui></ul>
+        </nav>
+        <form 
+          action="" 
+          data-mainListForm-mui
+          class="w-full px-5 mainListForm"
+        >
+          <div class="flex fixed bottom-0">
+            <p class="text-2xl text-[#FFFFFF] my-auto">+</p>
+            <input 
+              type="text" 
+              data-addNewList-mui
+              class="h-[2rem] text-[#FFFFFF] border-0 border-b-2 border-[#ffffff77] bg-transparent my-[1rem] mx-[1.5rem] p-0 focus-visible:outline-none placeholder:text-[#ffffff77] addNewList"
+              placeholder="new list name"
+            >        
           </div>
-          <div class="w-full h-4/5 rounded-b-lg">
-            <div class="w-full h-full overflow-y-auto" data-tasks>
-            </div>
-          </div>
-
-          <div class="listViewerFooter">
-            <form action="" data-ListViewForm class="border-0 border-t-2 border-t-[#4f54f977]" style="display: flex;">
-              <p class="text-2xl text-[#0000ffa2] font-bold m-0" style="margin: 0 0 0 1.3rem;">+</p>
-              <input type="text" data-addNewListView class="border-0 border-b-2 border-[#4f54f977] mx-[1.5rem] p-0 h-[3rem] text-[#0000ffa2] bg-transparent focus-visible:outline-none placeholder:text-[#4f54f977] listViewerFooterAddNewList" placeholder="new task name">
-            </form>
-          </div>
-
-        </div>
-
-        <div class="flex my-[1rem] justify-between">
-          <button class="border-0 text-[#ffffff7e] cursor-pointer bg-transparent hover:text-[#FFFFFF]" data-clearTaskBtn>Clear Task</button>
-          <button class="border-0 text-[#ffffff7e] cursor-pointer bg-transparent hover:text-[#FFFFFF]" data-deleteListBtn>Delete List</button>
-        </div>
+        </form>
       </div>
+      <main class="py-[2.5rem]">
+        <div class="px-[1rem] sm:px-[1.5rem] lg:px-[2rem]">
+            <div class="relative h-[40rem] rounded-xl border-2" data-listViewer>
+              <div class="w-full h-full listInnerViewer">
+                <div class="flex px-[1rem] rounded-t-lg justify-between bg-[#e0e0e0]">
+                  <h2 class="my-auto text-xl font-semibold" data-listName></h2>
+                  <p class="my-[1.5rem]" data-listCount></p>
+                </div>
+                <div class="w-full h-4/5 rounded-b-lg">
+                  <div class="w-full h-full overflow-y-auto" data-tasks>
+                  </div>
+                </div>
+                <div class="listViewerFooter">
+                  <form action="" data-ListViewForm class="border-0 border-t-2 border-t-[#4f54f977]" style="display: flex;">
+                    <p class="text-2xl text-[#0000ffa2] font-bold m-0" style="margin: 0 0 0 1.3rem;">+</p>
+                    <input type="text" data-addNewListView class="border-0 border-b-2 border-[#4f54f977] mx-[1.5rem] p-0 h-[3rem] text-[#0000ffa2] bg-transparent focus-visible:outline-none placeholder:text-[#4f54f977] listViewerFooterAddNewList" placeholder="new task name">
+                  </form>
+                </div>
+              </div>
+              <div class="flex my-[1rem] justify-between">
+                <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-clearTaskBtn>Clear Task</button>
+                <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-deleteListBtn>Delete List</button>
+              </div>
+            </div>
+        </div>
+      </main>  
     </div>
 
-    <template id="tempTask">
-      <div class="relative p-[1rem] text-xl border-t-2">
+    <template id="tempTask" class="">
+      <div class="relative p-[1rem] text-xl border-b-2">
         <input type="checkbox" class="absolute opacity-0"/>
         <label>
           <span class="custom-checkbox"></span>
@@ -67,7 +100,7 @@
       </div>
     </template>
   </div>
-  
-  <script defer src="/script.js"></script>
+
+  <script src="/script.js"></script>
 </body>
 </html>
