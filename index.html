@@ -59,6 +59,7 @@
               type="text" 
               data-addNewList-mui
               class="h-[2rem] text-[#FFFFFF] border-0 border-b-2 border-[#ffffff77] bg-transparent my-[1rem] mx-[1.5rem] p-0 focus-visible:outline-none placeholder:text-[#ffffff77] addNewList"
+              id="addNewList"
               placeholder="new list name"
             >        
           </div>
@@ -66,28 +67,28 @@
       </div>
       <main class="py-[2.5rem]">
         <div class="px-[1rem] sm:px-[1.5rem] lg:px-[2rem]">
-            <div class="relative h-[40rem] rounded-xl border-2 listViewer" data-listViewer>
-              <div class="w-full h-full listInnerViewer">
-                <div class="flex px-[1rem] rounded-t-lg justify-between bg-[#e0e0e0]">
-                  <h2 class="my-auto text-xl font-semibold" data-listName></h2>
-                  <p class="my-[1.5rem]" data-listCount></p>
-                </div>
-                <div class="w-full h-4/5 rounded-b-lg">
-                  <div class="w-full h-full overflow-y-auto" data-tasks>
-                  </div>
-                </div>
-                <div class="listViewerFooter">
-                  <form action="" data-ListViewForm class="border-0 border-t-2 border-t-[#4f54f977]" style="display: flex;">
-                    <p class="text-2xl text-[#0000ffa2] font-bold m-0" style="margin: 0 0 0 1.3rem;">+</p>
-                    <input type="text" data-addNewListView class="border-0 border-b-2 border-[#4f54f977] mx-[1.5rem] p-0 h-[3rem] text-[#0000ffa2] bg-transparent focus-visible:outline-none placeholder:text-[#4f54f977] listViewerFooterAddNewList" placeholder="new task name">
-                  </form>
+          <div class="relative h-[40rem] rounded-xl border-2 listViewer" data-listViewer>
+            <div class="w-full h-full listInnerViewer">
+              <div class="flex px-[1rem] rounded-t-lg justify-between bg-[#e0e0e0]">
+                <h2 class="my-auto text-xl font-semibold" data-listName></h2>
+                <p class="my-[1.5rem]" data-listCount></p>
+              </div>
+              <div class="w-full h-4/5 rounded-b-lg">
+                <div class="w-full h-full overflow-y-auto" data-tasks>
                 </div>
               </div>
-              <div class="flex my-[1rem] justify-between">
-                <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-clearTaskBtn>Clear Task</button>
-                <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-deleteListBtn>Delete List</button>
+              <div class="listViewerFooter">
+                <form action="" data-ListViewForm class="border-0 border-t-2 border-t-[#4f54f977]" style="display: flex;">
+                  <p class="text-2xl text-[#0000ffa2] font-bold m-0" style="margin: 0 0 0 1.3rem;">+</p>
+                  <input type="text" data-addNewListView class="border-0 border-b-2 border-[#4f54f977] mx-[1.5rem] p-0 h-[3rem] text-[#0000ffa2] bg-transparent focus-visible:outline-none placeholder:text-[#4f54f977] listViewerFooterAddNewList" placeholder="new task name">
+                </form>
               </div>
             </div>
+            <div class="flex my-[1rem] justify-between">
+              <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-clearTaskBtn>Clear Task</button>
+              <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-deleteListBtn>Delete List</button>
+            </div>
+          </div>
         </div>
       </main>  
     </div>

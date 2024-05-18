@@ -47,16 +47,19 @@ deleteListBtn.addEventListener('click', e => {
   mainList = mainList.filter(list => list.id !== selectedListId)
   selectedListId = null
   saveRender()
+  mainSelection()
 })
 
 mainListFormDui.addEventListener('submit', e => {
   e.preventDefault();
-  const newListItem = addNewListDui.value;
+  let newListItem = addNewListDui.value;
+  console.log(newListItem)
   if(newListItem == null || newListItem === '') return;
   const list = createNewList(newListItem);
   mainList.push(list);
   saveRender()
-  document.querySelector('.addNewList').value = '';
+  document.querySelector('.addNewList').value = ''
+  mainSelection()
 });
 
 mainListFormMui.addEventListener('submit', e => {
@@ -67,6 +70,7 @@ mainListFormMui.addEventListener('submit', e => {
   mainList.push(list);
   saveRender()
   document.querySelector('.addNewList').value = '';
+  mainSelection()
 });
 
 ListViewForm.addEventListener('submit', e => {
@@ -116,7 +120,7 @@ function render() {
     listViewer.style.display = 'none';
   } else {
     listViewer.style.display = '';
-    listName.innerText = selectedList.name
+    listName.innerText = selectedList ? selectedList.name : ''
     renderTaskCount(selectedList)
     cleanElement(tasks);
     renderTasks(selectedList)
@@ -124,20 +128,22 @@ function render() {
 }
 
 function renderTasks(selectedList) {
-  selectedList.tasks.forEach(task => {
-    const taskTempElem = document.importNode(tempTask.content, true)
-    const checkBox = taskTempElem.querySelector('input');
-    checkBox.id = task.id;
-    checkBox.checked = task.complete;
-    const label = taskTempElem.querySelector('label');
-    label.htmlFor = task.id;
-    label.append(task.name);
-    tasks.appendChild(taskTempElem);
-  });
+  if(selectedList) {
+    selectedList.tasks.forEach(task => {
+      const taskTempElem = document.importNode(tempTask.content, true)
+      const checkBox = taskTempElem.querySelector('input');
+      checkBox.id = task.id;
+      checkBox.checked = task.complete;
+      const label = taskTempElem.querySelector('label');
+      label.htmlFor = task.id;
+      label.append(task.name);
+      tasks.appendChild(taskTempElem);
+    });    
+  }
 }
 
 function renderTaskCount(selectedList) {
-  const inCompleteTask = selectedList.tasks.filter(task => !task.complete).length;
+  const inCompleteTask = selectedList ? selectedList.tasks.filter(task => !task.complete).length : '';
   const taskStr = inCompleteTask === 1 ? 'task' : 'tasks';
   listCount.innerText = `${inCompleteTask} ${taskStr} remaining`
 }
@@ -198,3 +204,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+mainSelection()
+// console.log(listContainerDui.firstChild.dataset.listId)
+function mainSelection() {
+  listContainerDui.firstChild.classList.add('activedList')
+  listContainerDui.firstChild.tagName.toLowerCase() === 'li' ? (
+    selectedListId = listContainerDui.firstChild.dataset.listId,
+    saveRender()
+  ) : ''
+}
