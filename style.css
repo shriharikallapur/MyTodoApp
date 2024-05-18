@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0.3rem 0;
   cursor: pointer;
+  font-size: 21px;
 }
 
 .activedList { color: white; }
