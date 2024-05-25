@@ -69,27 +69,32 @@
       </div>
       <main class="h-[90%] py-[2.5rem]">
         <div class="h-full px-[1rem] sm:px-[1.5rem] lg:px-[2rem]">
-          <div class="relative h-[90%] rounded-xl border-2 listViewer" data-listViewer>
+          <div class="relative h-full rounded-xl border-2 listViewer" data-listViewer>
             <div class="w-full h-full listInnerViewer">
-              <div class="flex px-[1rem] rounded-t-lg justify-between bg-[#e0e0e0]">
-                <h2 class="my-auto text-xl font-semibold" data-listName></h2>
-                <p class="my-[1.5rem]" data-listCount></p>
+              <div class="flex px-[1rem] h-[12%] rounded-t-lg justify-between bg-[#e0e0e0]">
+                <h2 class="my-auto text-xl font-semibold truncate w-[12rem]" data-listName></h2>
+                <p class="my-[1rem] w-[5rem] text-center" data-listCount></p>
+                <button class="border-0 text-[#000000] cursor-pointer bg-transparent w-[1.5rem]" data-deleteListBtn>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                  </svg>
+                </button>
               </div>
-              <div class="w-full h-4/5 rounded-b-lg">
+              <div class="w-full h-[78%] rounded-b-lg">
                 <div class="w-full h-full overflow-y-auto" data-tasks>
                 </div>
               </div>
-              <div class="listViewerFooter">
-                <form action="" data-ListViewForm class="border-0 border-t-2 border-t-[#4f54f977]" style="display: flex;">
-                  <p class="text-2xl text-[#0000ffa2] font-bold m-0" style="margin: 0 0 0 1.3rem;">+</p>
+              <div class="listViewerFooter h-[10%] border-0 border-t-2 border-t-[#4f54f977]">
+                <form action="" data-ListViewForm class="flex h-full">
+                  <p class="text-2xl text-[#0000ffa2] font-bold m-0 flex items-center" style="margin: 0 0 0 1.3rem;">+</p>
                   <input type="text" data-addNewListView class="border-0 border-b-2 border-[#4f54f977] mx-[1.5rem] p-0 h-[3rem] text-[#0000ffa2] bg-transparent focus-visible:outline-none placeholder:text-[#4f54f977] listViewerFooterAddNewList" placeholder="new task name">
                 </form>
               </div>
             </div>
-            <div class="flex mt-[3rem] justify-between">
+            <!-- <div class="flex mt-[3rem] justify-between">
               <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-clearTaskBtn>Clear Task</button>
               <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-deleteListBtn>Delete List</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </main>  
