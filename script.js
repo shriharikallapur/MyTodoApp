@@ -35,12 +35,12 @@ tasks.addEventListener('click', e => {
   }
 })
 
-deleteListBtn.addEventListener('click', e => {
-  mainList = mainList.filter(list => list.id !== selectedListId)
-  selectedListId = null
-  saveRender()
-  mainSelection()
-})
+// deleteListBtn.addEventListener('click', e => {
+//   mainList = mainList.filter(list => list.id !== selectedListId)
+//   selectedListId = null
+//   saveRender()
+//   mainSelection()
+// })
 
 mainListFormMui.addEventListener('submit', e => {
   e.preventDefault();
