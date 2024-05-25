@@ -1,13 +1,13 @@
 .sameColorWhite { 
   color: #ffffff77;
   margin: 0;
-  padding: 0.3rem 1rem;
+  padding: 0.5rem 1rem;
   width: 100%;
   cursor: pointer;
   font-size: 21px;
-  overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  border-top: .1rem solid #ffffff77;
+  border-bottom: .1rem solid #ffffff77;
 }
 
 .activedList { color: white; background-color: #2b3856}
