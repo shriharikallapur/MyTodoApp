@@ -10,31 +10,8 @@
 </head>
 <body>
   <div class='w-screen h-screen flex'>
-    <!-- <div class='lg:w-1/5 w-0 h-[100vh] bg-gray-900 md:block hidden'>
-      <p class="w-full text-2xl font-bold text-[#FFFFFF] my-[0.5rem] px-7">My Lists</p>
-      <nav>
-        <ul class='list-disc w-full h-[44rem] ps-[2rem]
-        overflow-y-auto' data-lists-dui></ul>
-      </nav>
-      <form
-        action="" 
-        data-mainListForm-dui
-        class="w-full px-5 mainListForm"
-      >
-        <div class="flex fixed bottom-0">
-          <p class="text-2xl text-[#FFFFFF] my-auto">+</p>
-          <input 
-            type="text" 
-            data-addNewList-dui
-            class="h-[2rem] text-[#FFFFFF] border-0 border-b-2 border-[#ffffff77] bg-transparent my-[1rem] mx-[1.5rem] p-0 focus-visible:outline-none placeholder:text-[#ffffff77] addNewList"
-            placeholder="new list name"
-          >        
-        </div>
-      </form>
-    </div> -->
-
     <div class='lg:w-4/5 w-full h-full'>
-      <nav class='w-full h-[10%] border-b-2 flex'>
+      <nav class='w-full h-[10%] border-b-2 flex fixed'>
         <button type="button" class='navbar-burger p-[0.625rem] lg:hidden block'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-[1.5rem] h-[1.5rem]">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
@@ -42,16 +19,16 @@
         </button>
         <p class="m-auto text-xl font-medium">Make Me To-Do</p>
       </nav>
-      <div class="absolute navbar-menu bg-[#68686894] hidden w-full h-[90%] z-10">
+      <div class="absolute navbar-menu bg-[#68686894] hidden w-full h-[100%] z-10">
         <div class="w-[70%] h-full bg-gray-900">
-          <p class="w-full text-2xl font-bold text-[#FFFFFF] mb-[0.5rem] px-7">My Lists</p>
+          <p class="w-full text-2xl font-bold text-[#FFFFFF] mb-[0.5rem] px-7 py-[1rem]">My Lists</p>
           <nav class="h-[85%]">
             <ul class='list-disc w-full h-full overflow-y-auto' data-lists-mui></ul>
           </nav>
           <form 
             action="" 
             data-mainListForm-mui
-            class="w-full px-5 mt-3 mainListForm"
+            class="w-full px-5 my-3 mainListForm"
           >
             <div class="flex relative bottom-0">
               <p class="text-2xl text-[#FFFFFF] my-auto">+</p>
@@ -66,7 +43,7 @@
           </form>
         </div>
       </div>
-      <main class="h-[90%] py-[2.5rem]">
+      <main class="h-[90%] py-[2.5rem] mt-[5rem]">
         <div class="h-full px-[1rem] sm:px-[1.5rem] lg:px-[2rem]">
           <div class="relative h-full rounded-xl border-2 listViewer" data-listViewer>
             <div class="w-full h-full listInnerViewer">
@@ -90,10 +67,6 @@
                 </form>
               </div>
             </div>
-            <!-- <div class="flex mt-[3rem] justify-between">
-              <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-clearTaskBtn>Clear Task</button>
-              <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-deleteListBtn>Delete List</button>
-            </div> -->
           </div>
         </div>
       </main>  
