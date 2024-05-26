@@ -15,7 +15,6 @@ const LOC_STORAGE_LI_KEY = 'task.list';
 const LOC_STORAGE_SELECTED_LI_ID_KEY = 'task.selectedIDList'
 let mainList = JSON.parse(localStorage.getItem(LOC_STORAGE_LI_KEY)) || [];
 let selectedListId = localStorage.getItem(LOC_STORAGE_SELECTED_LI_ID_KEY);
-
 listContainerMui.addEventListener('click', e => {
   e.target.tagName.toLowerCase() === 'li' ? (
     selectedListId = e.target.dataset.listId,
@@ -117,6 +116,8 @@ function renderTasks(selectedList) {
       const label = taskTempElem.querySelector('label');
       label.htmlFor = task.id;
       label.append(task.name);
+      const del = taskTempElem.querySelector('button')
+      del.id = task.id
       tasks.appendChild(taskTempElem);
     });    
   }
@@ -160,3 +161,17 @@ function mainSelection() {
     saveRender()
   ) : ''
 }
+
+const delTaskBtn = document.querySelectorAll('.deleteTaskBtn');
+
+delTaskBtn.forEach(ele => {
+  ele.addEventListener('click', e => {
+    const tasksList = mainList.find(list => list.id === selectedListId).tasks
+    for (let i=0; i<tasksList.length; i++) {
+      if(tasksList[i]['id'] === e.target.id) tasksList.splice(i, 1)
+    }
+    saveRender()
+    mainSelection()
+    location.reload()
+  });
+});
