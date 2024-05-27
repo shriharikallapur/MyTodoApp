@@ -117,8 +117,8 @@ function renderTasks(selectedList) {
       const label = taskTempElem.querySelector('label');
       label.htmlFor = task.id;
       label.append(task.name);
-      // const del = taskTempElem.querySelector('button')
-      // del.id = task.id
+      const del = taskTempElem.querySelector('button')
+      del.id = task.id
       tasks.appendChild(taskTempElem);
     });    
   }
