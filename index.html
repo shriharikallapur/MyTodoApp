@@ -9,17 +9,17 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <div class='w-screen h-screen flex'>
-    <div class='lg:w-4/5 w-full h-full'>
-      <nav class='w-full h-[10%] border-b-2 flex fixed'>
-        <button type="button" class='navbar-burger p-[0.625rem] lg:hidden block'>
+  <div class='w-screen h-screen flex justify-center items-center'>
+    <div class='lg:w-[28rem] w-full h-full'>
+      <nav class='w-[30rem] h-[10%] border-b-2 flex left-[36rem] fixed'>
+        <button type="button" class='navbar-burger p-[0.625rem] block'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-[1.5rem] h-[1.5rem]">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
           </svg>
         </button>
         <p class="m-auto text-xl font-medium">Make Me To-Do</p>
       </nav>
-      <div class="absolute navbar-menu bg-[#68686894] hidden w-full h-screen z-10">
+      <div class="absolute navbar-menu bg-[#68686894] hidden w-[30rem] h-screen z-10 left-[36rem]">
         <div class="w-[70%] h-full bg-gray-900">
           <p class="w-full text-2xl font-bold text-[#FFFFFF] h-[10%] px-7 py-[1rem]">My Lists</p>
           <nav class="h-[80%]">
@@ -76,7 +76,7 @@
             <span class="custom-checkbox"></span>
           </label>
         </div>
-        <!-- <button type="button" class="w-[10%] flex justify-center items-center deleteTaskBtn">D</button> -->
+        <button type="button" class="w-[10%] flex justify-center items-center deleteTaskBtn">D</button>
       </div>
     </template>
   </div>
