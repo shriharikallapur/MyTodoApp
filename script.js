@@ -14,16 +14,13 @@ const addNewListView = document.querySelector('[data-addNewListView]');
 const LOC_STORAGE_LI_KEY = 'task.list';
 let LOC_STORAGE_SELECTED_LI_ID_KEY = 'task.selectedIDList'
 let mainList = JSON.parse(localStorage.getItem(LOC_STORAGE_LI_KEY)) || [];
-
-console.log(mainList);
-
 let selectedListId = localStorage.getItem(LOC_STORAGE_SELECTED_LI_ID_KEY);
 listContainerMui.addEventListener('click', e => {
   e.target.tagName.toLowerCase() === 'li' ? (
     selectedListId = e.target.dataset.listId,
     saveRender(),
     document.querySelector('.navbar-menu').classList.add('hidden')
-    , deleteTaskBtn()
+    // , deleteTaskBtn()
   ) : ''
 })
 
@@ -120,8 +117,8 @@ function renderTasks(selectedList) {
       const label = taskTempElem.querySelector('label');
       label.htmlFor = task.id;
       label.append(task.name);
-      const del = taskTempElem.querySelector('button')
-      del.id = task.id
+      // const del = taskTempElem.querySelector('button')
+      // del.id = task.id
       tasks.appendChild(taskTempElem);
     });
   }
@@ -166,18 +163,18 @@ function mainSelection() {
   ) : ''
 }
 
-deleteTaskBtn()
-function deleteTaskBtn() {
-  const delTaskBtn = document.querySelectorAll('.deleteTaskBtn')
-  delTaskBtn.forEach(ele => {
-    const tasksList = mainList.find(list => list.id === selectedListId).tasks
-    ele.addEventListener('click', e => {
-      for (let i=0; i<tasksList.length; i++) {
-        if(tasksList[i]['id'] === e.target.id) tasksList.splice(i, 1)
-      }
-      saveRender()
-      mainSelection()
-      location.reload()
-    })
-  })
-}
+// deleteTaskBtn()
+// function deleteTaskBtn() {
+//   const delTaskBtn = document.querySelectorAll('.deleteTaskBtn')
+//   delTaskBtn.forEach(ele => {
+//     const tasksList = mainList.find(list => list.id === selectedListId).tasks
+//     ele.addEventListener('click', e => {
+//       for (let i=0; i<tasksList.length; i++) {
+//         if(tasksList[i]['id'] === e.target.id) tasksList.splice(i, 1)
+//       }
+//       saveRender()
+//       mainSelection()
+//       location.reload()
+//     })
+//   })
+// }
