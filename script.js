@@ -20,7 +20,7 @@ listContainerMui.addEventListener('click', e => {
     selectedListId = e.target.dataset.listId,
     saveRender(),
     document.querySelector('.navbar-menu').classList.add('hidden')
-    // , deleteTaskBtn()
+    , deleteTaskBtn()
   ) : ''
 })
 
@@ -163,18 +163,18 @@ function mainSelection() {
   ) : ''
 }
 
-// deleteTaskBtn()
-// function deleteTaskBtn() {
-//   const delTaskBtn = document.querySelectorAll('.deleteTaskBtn');
-//   delTaskBtn.forEach(ele => {
-//     const tasksList = mainList.find(list => list.id === selectedListId).tasks
-//     ele.addEventListener('click', e => {
-//       for (let i=0; i<tasksList.length; i++) {
-//         if(tasksList[i]['id'] === e.target.id) tasksList.splice(i, 1)
-//       }
-//       saveRender()
-//       mainSelection()
-//       location.reload()
-//     });
-//   });
-// }
+deleteTaskBtn()
+function deleteTaskBtn() {
+  const delTaskBtn = document.querySelectorAll('.deleteTaskBtn');
+  delTaskBtn.forEach(ele => {
+    const tasksList = mainList.find(list => list.id === selectedListId).tasks
+    ele.addEventListener('click', e => {
+      for (let i=0; i<tasksList.length; i++) {
+        if(tasksList[i]['id'] === e.target.id) tasksList.splice(i, 1)
+      }
+      saveRender()
+      mainSelection()
+      location.reload()
+    });
+  });
+}
