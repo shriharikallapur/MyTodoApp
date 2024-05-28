@@ -28,7 +28,8 @@ listContainerDui.addEventListener('click', e => {
 listContainerMui.addEventListener('click', e => {
   e.target.tagName.toLowerCase() === 'li' ? (
     selectedListId = e.target.dataset.listId,
-    saveRender()
+    saveRender(),
+    document.querySelector('.navbar-menu').classList.add('hidden')
   ) : ''
 })
 
@@ -43,12 +44,12 @@ tasks.addEventListener('click', e => {
   }
 })
 
-deleteListBtn.addEventListener('click', e => {
-  mainList = mainList.filter(list => list.id !== selectedListId)
-  selectedListId = null
-  saveRender()
-  mainSelection()
-})
+// deleteListBtn.addEventListener('click', e => {
+//   mainList = mainList.filter(list => list.id !== selectedListId)
+//   selectedListId = null
+//   saveRender()
+//   mainSelection()
+// })
 
 mainListFormDui.addEventListener('submit', e => {
   e.preventDefault();
