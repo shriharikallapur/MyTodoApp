@@ -181,7 +181,8 @@ function render() {
 
 function renderTasks(selectedList) {
   if(selectedList) {
-    selectedList.tasks.forEach(task => {
+    const inCompleteTask = selectedList ? selectedList.tasks.filter(task => !task.complete) : '';
+    inCompleteTask.forEach(task => {
       const taskTempElem = document.importNode(tempTask.content, true)
       const checkBox = taskTempElem.querySelector('input');
       checkBox.id = task.id;
