@@ -74,7 +74,6 @@ tasks.addEventListener('click', e => {
     const selectedList = mainList.find(list => list.id === selectedListId);
     const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
     selectedTask.complete = e.target.checked;
-    console.log(selectedTask);
     e.target.nextSibling.nextSibling.addEventListener('mousedown', e => e.detail > 1 ? e.preventDefault() : '', false);
     save()
     renderTaskCount(selectedList)
@@ -89,7 +88,6 @@ function renderCompletedTask(selectedList) {
     if(completedTask.length > 0) {
       let completedTaskName = ``
       for (const item of completedTask) {
-        console.log(item);
         completedTaskName += `<p id='${item['id']}' class='p-[1rem] text-xl border-b-2'>${item['name']}</p>`
       }
       document.querySelector('[data-completed-tasks]').innerHTML = completedTaskName
@@ -107,7 +105,6 @@ function renderCompletedTask(selectedList) {
 mainListFormDui.addEventListener('submit', e => {
   e.preventDefault();
   let newListItem = addNewListDui.value;
-  console.log(newListItem)
   if(newListItem == null || newListItem === '') return;
   const list = createNewList(newListItem);
   mainList.push(list);
@@ -184,7 +181,6 @@ function render() {
 
 function renderTasks(selectedList) {
   if(selectedList) {
-    console.log(selectedList);
     selectedList.tasks.forEach(task => {
       const taskTempElem = document.importNode(tempTask.content, true)
       const checkBox = taskTempElem.querySelector('input');
@@ -237,19 +233,22 @@ document.querySelector('.navbar-burger').addEventListener('click', function() {
 
 mainSelection()
 function mainSelection() {
-  console.log(screen.width, typeof screen.width);
   if(screen.width >= 1024) {
     listContainerDui.firstChild.classList.add('activedList')
-    listContainerDui.firstChild.tagName.toLowerCase() === 'li' ? (
-      selectedListId = listContainerDui.firstChild.dataset.listId,
+    if(listContainerDui.firstChild.tagName.toLowerCase() === 'li') {
+      for(const i of listContainerDui.children) {
+        if(i['classList'].length === 2) selectedListId = i.dataset.listId
+      }
       saveRender()
-    ) : ''
+    }
   } else {
     listContainerMui.firstChild.classList.add('activedList')
-    listContainerMui.firstChild.tagName.toLowerCase() === 'li' ? (
-      selectedListId = listContainerMui.firstChild.dataset.listId,
+    if(listContainerMui.firstChild.tagName.toLowerCase() === 'li') {
+      for(const i of listContainerMui.children) {
+        if(i['classList'].length === 2) selectedListId = i.dataset.listId
+      }
       saveRender()
-    ) : ''
+    }
   }
 }
 
