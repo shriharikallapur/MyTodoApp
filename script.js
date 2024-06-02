@@ -57,6 +57,7 @@ listContainerDui.addEventListener('click', e => {
     selectedListId = e.target.dataset.listId
     saveRender()
     renderCompletedTask(mainList.find(list => list.id === selectedListId))
+    location.reload()
   }
 })
 
@@ -66,6 +67,7 @@ listContainerMui.addEventListener('click', e => {
     saveRender()
     renderCompletedTask(mainList.find(list => list.id === selectedListId))
     document.querySelector('.navbar-menu').classList.add('hidden')
+    location.reload()
   }
 })
 
