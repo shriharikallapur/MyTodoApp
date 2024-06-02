@@ -40,7 +40,21 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
           </svg>
         </button>
-        <p class="m-auto text-2xl font-medium">Make Me To-Do</p>
+        <p class="m-auto text-2xl font-medium">Make Me To Do</p>
+        <div class="flex justify-around items-center me-2 w-[10rem]">
+          <div class="">
+            <p class="text-center" data-year></p>
+            <div class="flex justify-evenly">
+              <p data-day></p>
+              <p data-month></p>
+            </div>
+            <p class="text-center text-xl" data-time></p>
+          </div>
+          <div class="w-16 h-16 flex justify-center items-center rounded-full" data-date-container>
+            <p class="text-xl font-bold text-center" data-date></p>
+          </div>
+
+        </div>
       </nav>
       <div class="absolute top-0 z-10 navbar-menu bg-gray-900 w-full h-full hidden">
         <p class="w-full text-2xl font-bold text-[#FFFFFF] h-[10%] px-7 py-[1rem]">My Lists</p>
@@ -56,47 +70,82 @@
         </form>
       </div>
       <main class="w-full h-[90%] py-[2.5rem]">
-        <div class="px-[1rem] h-full sm:px-[1.5rem] lg:px-[2rem]">
-          <div class="relative h-full rounded-xl border-2 listViewer" data-listViewer>
-            <div class="w-full h-full listInnerViewer">
-              <div class="flex px-[1rem] h-[12%] rounded-t-lg justify-between bg-[#e0e0e0]">
-                <h2 class="my-auto text-xl font-semibold text-ellipsis overflow-hidden w-[16rem]" data-listName></h2>
-                <p class="my-[1rem] w-[5rem] text-center" data-listCount></p>
-                <!-- <button class="border-0 text-[#000000] cursor-pointer bg-transparent w-[1.5rem]" data-deleteListBtn>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-                  </svg>
-                </button> -->
-              </div>
-              <div class="w-full h-[78%] rounded-b-lg">
-                <div class="w-full h-full overflow-y-auto" data-tasks>
+        <h1 class="my-auto text-2xl sm:h-[10%] lg:h-[5%] font-semibold text-ellipsis overflow-hidden w-auto mb-10 mx-10" data-listName></h1>
+        <div class="lg:flex sm:block w-full h-[95%]">
+          <div class="px-[1rem] sm:w-full lg:w-[70%] h-[90%] sm:px-[1.5rem] lg:ps-[2rem] lg:pe-[1rem]">
+            <div class="relative w-full h-full rounded-xl border-2 listViewer" data-listViewer>
+              <div class="w-full h-full listInnerViewer">
+                <div class="flex px-[1rem] h-[12%] rounded-t-lg justify-between bg-[#e0e0e0]">
+                  <h2 class="my-auto text-xl font-semibold text-ellipsis overflow-hidden w-[16rem]">Chapters yet to be Complete</h2>
+                  <p class="my-[.5rem] w-[5rem] text-center" data-listCount></p>
+                  <!-- <button class="border-0 text-[#000000] cursor-pointer bg-transparent w-[1.5rem]" data-deleteListBtn>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                      <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                    </svg>
+                  </button> -->
+                </div>
+                <div class="w-full h-[78%] rounded-b-lg">
+                  <div class="w-full h-full overflow-y-auto" data-tasks>
+                  </div>
+                </div>
+                <div class="listViewerFooter h-[10%] border-0 border-t-2 border-t-[#4f54f977]">
+                  <form action="" data-ListViewForm class="flex w-full h-full">
+                    <p class="w-[2%] text-2xl text-[#0000ffa2] font-bold m-0 flex items-center" style="margin: 0 0 0 1.3rem;">+</p>
+                    <input type="text" data-addNewListView class="w-[98%] border-0 border-b-2 border-[#4f54f977] mx-[1.5rem] p-0 h-[3rem] text-[#0000ffa2] bg-transparent focus-visible:outline-none placeholder:text-[#4f54f977] listViewerFooterAddNewList" placeholder="new task name">
+                  </form>
                 </div>
               </div>
-              <div class="listViewerFooter h-[10%] border-0 border-t-2 border-t-[#4f54f977]">
-                <form action="" data-ListViewForm class="flex w-full h-full">
-                  <p class="w-[2%] text-2xl text-[#0000ffa2] font-bold m-0 flex items-center" style="margin: 0 0 0 1.3rem;">+</p>
-                  <input type="text" data-addNewListView class="w-[98%] border-0 border-b-2 border-[#4f54f977] mx-[1.5rem] p-0 h-[3rem] text-[#0000ffa2] bg-transparent focus-visible:outline-none placeholder:text-[#4f54f977] listViewerFooterAddNewList" placeholder="new task name">
-                </form>
+              <!-- <div class="flex my-[1rem] justify-between">
+                <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-clearTaskBtn>Clear Task</button>
+                <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-deleteListBtn>Delete List</button>
+              </div> -->
+            </div>
+          </div>
+  
+          <div class="px-[1rem] sm:w-full lg:w-[30%] h-[90%] sm:px-[1.5rem] py-[2rem] lg:py-0 lg:ps-[1rem] lg:pe-[2rem]">
+            <div class="relative w-full h-full rounded-xl border-2 listViewer" data-completed-listViewer>
+              <div class="w-full h-full listInnerViewer">
+                <div class="flex px-[1rem] h-[12%] rounded-t-lg justify-between bg-[#e0e0e0]">
+                  <h2 class="my-auto text-xl font-semibold text-ellipsis overflow-hidden w-[16rem]">Completed Chapters</h2>
+                  <p class="my-[.5rem] w-[5rem] text-center" data-completed-listCount></p>
+                  <!-- <button class="border-0 text-[#000000] cursor-pointer bg-transparent w-[1.5rem]" data-deleteListBtn>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                      <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                    </svg>
+                  </button> -->
+                </div>
+                <div class="w-full h-[78%] rounded-b-lg">
+                  <div class="w-full h-full overflow-y-auto" data-completed-tasks>
+                  </div>
+                </div>
               </div>
             </div>
-            <!-- <div class="flex my-[1rem] justify-between">
-              <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-clearTaskBtn>Clear Task</button>
-              <button class="border-0 text-[#000000] cursor-pointer bg-transparent" data-deleteListBtn>Delete List</button>
-            </div> -->
           </div>
         </div>
-      </main>  
+      </main>
     </div>
 
     <template id="tempTask" class="">
       <div class="relative p-[1rem] text-xl border-b-2 flex">
         <div class="inline-flex w-[90%]">
           <input type="checkbox" class="absolute opacity-0"/>
-          <label class="w-[100%]">
+          <label class="taskNameLabeled w-[100%]">
             <span class="custom-checkbox"></span>
           </label>
         </div>
-        <!-- <button type="button" class="w-[10%] flex justify-center items-center deleteTaskBtn">D</button> -->
+        <p class="w-[6%]" data-display-time></p>
+        <div class="w-[2%] flex justify-center items-center dropdown border rounded border-[#828282]">
+          <button class="dropbtn w-full h-full">
+            <!-- <div class="w-[.2rem] h-[.2rem] text-2xl rounded-full bg-[#828282] ms-[.6rem]"></div>
+            <div class="w-[.2rem] h-[.2rem] text-2xl rounded-full bg-[#828282] ms-[.6rem] my-1"></div>
+            <div class="w-[.2rem] h-[.2rem] text-2xl rounded-full bg-[#828282] ms-[.6rem]"></div> -->
+            E
+          </button>
+          <div id="myDropdown" class="dropdown-content">
+            <button class="text-left editTaskName">Edit</button>
+            <button type="button" class="deleteTaskBtn" disabled>Delete</button>
+          </div>
+        </div>
       </div>
     </template>
   </div>
