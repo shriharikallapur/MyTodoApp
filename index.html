@@ -13,22 +13,12 @@
     <div class='lg:w-1/5 w-full h-screen bg-gray-900 md:block hidden'>
       <p class="w-full text-2xl font-bold text-[#FFFFFF] h-[10%] px-7 py-[1rem]">My Lists</p>
       <nav>
-        <ul class='list-disc w-full h-full
-        overflow-y-auto' data-lists-dui></ul>
+        <ul class='list-disc w-full h-full overflow-y-auto' data-lists-dui></ul>
       </nav>
-      <form 
-        action="" 
-        data-mainListForm-dui
-        class="flex justify-center items-center px-5 h-[10%] mainListForm"
-      >
+      <form action="" data-mainListForm-dui class="flex justify-center items-center px-5 h-[10%] mainListForm">
         <div class="flex fixed bottom-0 pe-[1rem] w-[96%]">
           <p class="text-2xl text-[#FFFFFF] my-auto">+</p>
-          <input 
-            type="text" 
-            data-addNewList-dui
-            class="h-[2rem] text-[#FFFFFF] border-0 border-b-2 border-[#ffffff77] w-full bg-transparent ms-[1rem] focus-visible:outline-none placeholder:text-[#ffffff77] addNewList"
-            placeholder="new list name"
-          >        
+          <input type="text" data-addNewList-dui class="h-[2rem] text-[#FFFFFF] border-0 border-b-2 border-[#ffffff77] w-full bg-transparent ms-[1rem] focus-visible:outline-none placeholder:text-[#ffffff77] addNewList" placeholder="new list name">        
         </div>
       </form>
     </div>
@@ -127,23 +117,41 @@
 
     <template id="tempTask" class="">
       <div class="relative p-[1rem] text-xl border-b-2 flex">
-        <div class="inline-flex w-[90%]">
-          <input type="checkbox" class="absolute opacity-0"/>
-          <label class="taskNameLabeled w-[100%]">
-            <span class="custom-checkbox"></span>
-          </label>
+        <div class="inline-flex w-[85%] items-center">
+          <div>
+            <input type="checkbox" class="taskNameDisplay absolute opacity-0">
+            <label class="taskNameLabeled w-[100%]" id="" data-task-name-labeled="">
+              <span class="custom-checkbox"></span>
+            </label>
+          </div>
+          <form action="" class="taskNameLabeledInpForm">
+            <input type="text" class="taskNameLabeledInp hidden border-2 rounded border-[#828282] px-2" placeholder="you can rename here" value="">
+          </form>
         </div>
-        <p class="w-[6%]" data-display-time></p>
-        <div class="w-[2%] flex justify-center items-center dropdown border rounded border-[#828282]">
-          <button class="dropbtn w-full h-full">
-            <!-- <div class="w-[.2rem] h-[.2rem] text-2xl rounded-full bg-[#828282] ms-[.6rem]"></div>
-            <div class="w-[.2rem] h-[.2rem] text-2xl rounded-full bg-[#828282] ms-[.6rem] my-1"></div>
-            <div class="w-[.2rem] h-[.2rem] text-2xl rounded-full bg-[#828282] ms-[.6rem]"></div> -->
-            E
-          </button>
-          <div id="myDropdown" class="dropdown-content">
-            <button class="text-left editTaskName">Edit</button>
-            <button type="button" class="deleteTaskBtn" disabled>Delete</button>
+        <div class="w-[15%] flex justify-center items-center">
+          <div class="w-[80%] me-5">
+            <div>
+              <p class="w-full text-base" data-display-date></p>
+              <p class="w-full text-sm" data-display-time></p>
+            </div>
+            <div class="taskDateTimeContainer hidden">
+              <form action="" class="taskDateFrom">
+                <input type="text" class="w-full text-base taskDate border-2 rounded border-[#828282] px-2" placeholder="you can edit date" value="" data-display-date-inp>
+              </form>
+              <form class="taskTimeFrom">
+                <input type="text" class="w-full text-sm taskTime border-2 rounded border-[#828282] px-2" placeholder="you can edit time" value="" data-display-time-inp>
+              </form>
+            </div>
+          </div>
+          <div class="w-[20%] flex justify-center items-center">
+            <button class="saveChange hidden rounded px-2 border border-[#828282]">Save</button>
+            <div class="dropdown">
+              <button class="w-[1rem] h-[1rem] rounded-full bg-[#828282] dropbtn"></button>          
+              <div id="myDropdown" class="dropdown-content">
+                <button class="text-left editTaskName">Edit</button>
+                <button type="button" class="deleteTaskBtn" disabled>Delete</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

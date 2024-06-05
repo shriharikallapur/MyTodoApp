@@ -26,7 +26,7 @@ let selectedListId = localStorage.getItem(LOC_STORAGE_SELECTED_LI_ID_KEY);
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
-const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
 
 function timer() {
   let currentTime = new Date()
@@ -73,14 +73,18 @@ listContainerMui.addEventListener('click', e => {
 
 tasks.addEventListener('click', e => {
   if(e.target.tagName.toLowerCase() === 'input') {
-    const selectedList = mainList.find(list => list.id === selectedListId);
-    const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
-    selectedTask.complete = e.target.checked;
-    e.target.nextSibling.nextSibling.addEventListener('mousedown', e => e.detail > 1 ? e.preventDefault() : '', false);
-    save()
-    renderTaskCount(selectedList)
-    renderCompletedTask(selectedList)
-    location.reload()
+    for(let i=0; i<e.target.classList.length; i++) {
+      if(i === 'taskNameDisplay') {
+        const selectedList = mainList.find(list => list.id === selectedListId);
+        const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
+        selectedTask.complete = e.target.checked;
+        e.target.nextSibling.nextSibling.addEventListener('mousedown', e => e.detail > 1 ? e.preventDefault() : '', false);
+        save()
+        renderTaskCount(selectedList)
+        renderCompletedTask(selectedList)
+        location.reload()
+      }
+    }
   }
 })
 
@@ -169,9 +173,8 @@ function render() {
   cleanElement(listContainerMui);
   renderList()
   const selectedList = mainList.find(list => list.id === selectedListId)
-  if(selectedListId == null) {
-    listViewer.style.display = 'none';
-  } else {
+  if(selectedListId == null) listViewer.style.display = 'none'
+  else {
     listViewer.style.display = '';
     listName.innerText = selectedList ? selectedList.name : ''
     renderTaskCount(selectedList)
@@ -186,19 +189,29 @@ function renderTasks(selectedList) {
     const inCompleteTask = selectedList ? selectedList.tasks.filter(task => !task.complete) : '';
     inCompleteTask.forEach(task => {
       const taskTempElem = document.importNode(tempTask.content, true)
-      const checkBox = taskTempElem.querySelector('input');
-      checkBox.id = task.id;
-      checkBox.checked = task.complete;
-      const label = taskTempElem.querySelector('label');
-      label.htmlFor = task.id;
-      label.dataset.taskNameLabeledId = `${task.id}-taskNameLabeled`;
-      label.append(task.name);
+      const checkBox = taskTempElem.querySelector('input')
+      checkBox.id = task.id
+      checkBox.checked = task.complete
+      const label = taskTempElem.querySelector('label')
+      label.id = task.id
+      label.dataset.taskNameLabeled = task.id
+      label.append(task.name)
+      taskTempElem.querySelector('input.taskNameLabeledInp').id = task.id
+      taskTempElem.querySelector('input.taskNameLabeledInp').value = task.name
+      taskTempElem.querySelector('[data-display-date]').id = task.id
+      taskTempElem.querySelector('[data-display-date]').innerText = task.date
+      taskTempElem.querySelector('[data-display-time]').id = task.id
+      taskTempElem.querySelector('[data-display-time]').innerText = task.time
+      taskTempElem.querySelector('[data-display-date-inp]').id = task.id
+      taskTempElem.querySelector('[data-display-date-inp]').value = task.date
+      taskTempElem.querySelector('[data-display-time-inp]').id = task.id
+      taskTempElem.querySelector('[data-display-time-inp]').value = task.time
       taskTempElem.querySelector('div.dropdown').id = task.id
       taskTempElem.querySelector('button.dropbtn').id = task.id
       taskTempElem.querySelector('div.dropdown-content').id = `${task.id}-dropdown-content`
       taskTempElem.querySelector('button.editTaskName').id = task.id
-      tasks.appendChild(taskTempElem);
-    });
+      tasks.appendChild(taskTempElem)
+    })
   }
 }
 
@@ -255,60 +268,123 @@ function mainSelection() {
   }
 }
 
-// deleteTaskBtn()
-// function deleteTaskBtn() {
-//   const delTaskBtn = document.querySelectorAll('.deleteTaskBtn')
-//   delTaskBtn.forEach(ele => {
-//     const tasksList = mainList.find(list => list.id === selectedListId).tasks
-//     ele.addEventListener('click', e => {
-//       for (let i=0; i<tasksList.length; i++) {
-//         if(tasksList[i]['id'] === e.target.id) tasksList.splice(i, 1)
-//       }
-//       saveRender()
-//       mainSelection()
-//       location.reload()
-//     })
-//   })
-// }
+deleteTaskBtn()
+function deleteTaskBtn() {
+  const delTaskBtn = document.querySelectorAll('.deleteTaskBtn')
+  delTaskBtn.forEach(ele => {
+    const tasksList = mainList.find(list => list.id === selectedListId).tasks
+    ele.addEventListener('click', e => {
+      for (let i=0; i<tasksList.length; i++) {
+        if(tasksList[i]['id'] === e.target.id) tasksList.splice(i, 1)
+      }
+      saveRender()
+      mainSelection()
+      location.reload()
+    })
+  })
+}
 
-// openMenu()
-// function openMenu() {
-//   const dropbtn = document.querySelectorAll('.dropbtn')
-//   dropbtn.forEach(e => {
-//     e.addEventListener('click', el => {
-//       document.getElementById(`${e.id}-dropdown-content`).classList.toggle('show')
-//     })
-//   })
-// }
+openMenu()
+function openMenu() {
+  const dropbtn = document.querySelectorAll('.dropbtn')
+  dropbtn.forEach(e => {
+    e.addEventListener('click', el => {
+      document.getElementById(`${e.id}-dropdown-content`).classList.toggle('show')
+    })
+  })
+}
 
-// edit()
-// function edit() {
-//   const editBtn = document.querySelectorAll('.editTaskName')
-//   const taskNameLabeled = document.querySelectorAll('.taskNameLabeled')
-//   console.log(taskNameLabeled);
-//   editBtn.forEach(el => {
-//     el.addEventListener('click', e => {
-//       console.log(el.id);
-//       taskNameLabeled.forEach(ele => {
-//         if(el.id === ele.htmlFor) {
-//           console.log(true);
-//           console.log(document.querySelector('.taskNameLabeled').dataset.taskNameLabeledId(ele.htmlFor));
-//         }
-//       })
-//     })
-//   })
-// }
+edit()
+function edit() {
+  const editBtn = document.querySelectorAll('.editTaskName')
+  const taskNameLabeled = document.querySelectorAll('.taskNameLabeled')
+  editBtn.forEach(el => {
+    el.addEventListener('click', e => {
+      taskNameLabeled.forEach(ele => {
+        if(el.id === ele.id) {
+          el.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.classList.add('hidden')
+          el.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.firstElementChild.classList.remove('hidden')
+          el.parentElement.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.classList.add('hidden')
+          el.parentElement.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.classList.remove('hidden')
+        }
+      })
+    })
+  })
+}
 
-// Close the dropdown if the user clicks outside of it
+const mainListTask = mainList.find(list => list.id === selectedListId)['tasks']
+
+const renameBtn = document.querySelectorAll('.taskNameLabeledInpForm')
+renameBtn.forEach(el => {
+  el.addEventListener('submit', e => {
+    e.preventDefault()
+    for (const itm of mainListTask) {
+      if(itm['id'] === e.target.firstElementChild.id) itm['name'] = e.target.firstElementChild.value
+    }
+    saveRender()
+    mainSelection()
+    location.reload()
+  })
+})
+
+const dateFrom = document.querySelectorAll('.taskDateFrom')
+dateFrom.forEach(el => {
+  el.addEventListener('submit', e => {
+    e.preventDefault()
+    for (const itm of mainListTask) {
+      if(itm['id'] === e.target.firstElementChild.id) itm['date'] = e.target.firstElementChild.value
+    }
+    saveRender()
+    mainSelection()
+    location.reload()
+  })
+})
+
+const timeFrom = document.querySelectorAll('.taskTimeFrom')
+timeFrom.forEach(el => {
+  el.addEventListener('submit', e => {
+    e.preventDefault()
+    for (const itm of mainListTask) {
+      if(itm['id'] === e.target.firstElementChild.id) itm['time'] = e.target.lastElementChild.value
+    }
+    saveRender()
+    mainSelection()
+    location.reload()
+  })
+})
+
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+    let dropdowns = document.getElementsByClassName("dropdown-content")
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i]
+      if (openDropdown.classList.contains('show')) openDropdown.classList.remove('show')
+    }
+  }
+}
+
+function notiBro() {
+  let currentDate = new Date
+  for (const item of mainListTask) {
+    if(item['date'] !== undefined) {
+      if(Number(item['date'].split('/')[0]) === currentDate.getDate()) {
+        if(item['time'] !== undefined) {
+          console.log(item['time'].split(':')[1], currentDate.getMinutes());
+          if(Number(item['time'].split(':')[0]) === currentDate.getHours()) {
+            if(Number(item['time'].split(':')[1]) === currentDate.getMinutes()) {
+              Notification.requestPermission().then(perm => {
+                if(perm === 'granted') {
+                  new Notification(`${item['name']} ${item['date']} ${currentDate.getHours()}:${currentDate.getMinutes()}`, {
+                    icon: '/favicon.ico'
+                  })
+                }
+              })
+            }
+          }
+        }
       }
     }
   }
 }
+
+setInterval(notiBro, 1000)
