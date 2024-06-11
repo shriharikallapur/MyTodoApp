@@ -210,6 +210,7 @@ function renderTasks(selectedList) {
       taskTempElem.querySelector('button.dropbtn').id = task.id
       taskTempElem.querySelector('div.dropdown-content').id = `${task.id}-dropdown-content`
       taskTempElem.querySelector('button.editTaskName').id = task.id
+      taskTempElem.querySelector('button.deleteTaskBtn').id = task.id
       tasks.appendChild(taskTempElem)
     })
   }
@@ -274,6 +275,7 @@ function deleteTaskBtn() {
   delTaskBtn.forEach(ele => {
     const tasksList = mainList.find(list => list.id === selectedListId).tasks
     ele.addEventListener('click', e => {
+      console.log(tasksList.length, e.target);
       for (let i=0; i<tasksList.length; i++) {
         if(tasksList[i]['id'] === e.target.id) tasksList.splice(i, 1)
       }
