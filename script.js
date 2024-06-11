@@ -198,14 +198,14 @@ function renderTasks(selectedList) {
       label.append(task.name)
       taskTempElem.querySelector('input.taskNameLabeledInp').id = task.id
       taskTempElem.querySelector('input.taskNameLabeledInp').value = task.name
-      taskTempElem.querySelector('[data-display-date]').id = task.id
-      taskTempElem.querySelector('[data-display-date]').innerText = task.date
-      taskTempElem.querySelector('[data-display-time]').id = task.id
-      taskTempElem.querySelector('[data-display-time]').innerText = task.time
-      taskTempElem.querySelector('[data-display-date-inp]').id = task.id
-      taskTempElem.querySelector('[data-display-date-inp]').value = task.date
-      taskTempElem.querySelector('[data-display-time-inp]').id = task.id
-      taskTempElem.querySelector('[data-display-time-inp]').value = task.time
+      // taskTempElem.querySelector('[data-display-date]').id = task.id
+      // taskTempElem.querySelector('[data-display-date]').innerText = task.date
+      // taskTempElem.querySelector('[data-display-time]').id = task.id
+      // taskTempElem.querySelector('[data-display-time]').innerText = task.time
+      // taskTempElem.querySelector('[data-display-date-inp]').id = task.id
+      // taskTempElem.querySelector('[data-display-date-inp]').value = task.date
+      // taskTempElem.querySelector('[data-display-time-inp]').id = task.id
+      // taskTempElem.querySelector('[data-display-time-inp]').value = task.time
       taskTempElem.querySelector('div.dropdown').id = task.id
       taskTempElem.querySelector('button.dropbtn').id = task.id
       taskTempElem.querySelector('div.dropdown-content').id = `${task.id}-dropdown-content`
@@ -363,7 +363,7 @@ window.onclick = function(event) {
   }
 }
 
-function notiBro() {
+window.onbeforeunload = function notiBro() {
   let currentDate = new Date
   for (const item of mainListTask) {
     if(item['date'] !== undefined) {
@@ -372,13 +372,23 @@ function notiBro() {
           console.log(item['time'].split(':')[1], currentDate.getMinutes());
           if(Number(item['time'].split(':')[0]) === currentDate.getHours()) {
             if(Number(item['time'].split(':')[1]) === currentDate.getMinutes()) {
-              Notification.requestPermission().then(perm => {
-                if(perm === 'granted') {
-                  new Notification(`${item['name']} ${item['date']} ${currentDate.getHours()}:${currentDate.getMinutes()}`, {
-                    icon: '/favicon.ico'
-                  })
-                }
-              })
+              if(document.visibilityState === 'hidden') {
+                Notification.requestPermission().then(perm => {
+                  if(perm === 'granted') {
+                    new Notification(`${item['name']} ${item['date']} ${currentDate.getHours()}:${currentDate.getMinutes()}`, {
+                      icon: '/favicon.ico'
+                    })
+                  }
+                })
+              } else {
+                Notification.requestPermission().then(perm => {
+                  if(perm === 'granted') {
+                    new Notification(`${item['name']} ${item['date']} ${currentDate.getHours()}:${currentDate.getMinutes()}`, {
+                      icon: '/favicon.ico'
+                    })
+                  }
+                })
+              }
             }
           }
         }
@@ -387,4 +397,4 @@ function notiBro() {
   }
 }
 
-setInterval(notiBro, 1000)
+// setInterval(notiBro, 1000)
