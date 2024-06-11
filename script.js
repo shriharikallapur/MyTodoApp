@@ -304,6 +304,7 @@ function edit() {
         if(el.id === ele.id) {
           el.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.classList.add('hidden')
           el.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.firstElementChild.classList.remove('hidden')
+          el.parentElement.parentElement.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.firstElementChild.focus()
           el.parentElement.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.classList.add('hidden')
           el.parentElement.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.classList.remove('hidden')
         }
