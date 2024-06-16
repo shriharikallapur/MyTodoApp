@@ -3,6 +3,6 @@
   "name": "To-Do",
   "version": "1.0.0",
   "description": "A basic example extension with only required keys",
-  "homepage_url": "/",
+  "start_url": "/",
   "icons": ["/favicon.png", "/favicon.png"]
 }
