@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "A basic example extension with only required keys",
   "homepage_url": "/",
-  "icons": {
+  "icons": [
     "48": "/favicon.png",
     "128": "/favicon.png"
-  }
+  ]
 }
