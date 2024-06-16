@@ -6,9 +6,16 @@
   "start_url": "/",
   "display": "standalone",
   "description": "A basic example extension with only required keys",
-  "homepage_url": "/",
-  "icons": {
-    "48": "/favicon.png",
-    "128": "/favicon.png"
-  }
+  "icons": [
+    {
+      "src": "/imgs/favicon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/imgs/favicon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
 }
