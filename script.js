@@ -18,6 +18,7 @@ const time = document.querySelector('[data-time]')
 const date = document.querySelector('[data-date]')
 const year = document.querySelector('[data-year]')
 const dateContainer = document.querySelector('[data-date-container]')
+const dataholderOnclick = document.querySelector('[data-task-data-holder-onclick]')
 
 const LOC_STORAGE_LI_KEY = 'task.list';
 let LOC_STORAGE_SELECTED_LI_ID_KEY = 'task.selectedIDList'
@@ -101,12 +102,12 @@ function renderCompletedTask(selectedList) {
   }
 }
 
-// deleteListBtn.addEventListener('click', e => {
-//   mainList = mainList.filter(list => list.id !== selectedListId)
-//   selectedListId = null
-//   saveRender()
-//   mainSelection()
-// })
+deleteListBtn.addEventListener('click', e => {
+  mainList = mainList.filter(list => list.id !== selectedListId)
+  selectedListId = null
+  saveRender()
+  mainSelection()
+})
 
 mainListFormDui.addEventListener('submit', e => {
   e.preventDefault();
