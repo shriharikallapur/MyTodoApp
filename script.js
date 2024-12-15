@@ -74,8 +74,8 @@ listContainerMui.addEventListener('click', e => {
 
 tasks.addEventListener('click', e => {
   if(e.target.tagName.toLowerCase() === 'input') {
-    for(let i=0; i<e.target.classList.length; i++) {
-      if(i === 'taskNameDisplay') {
+    for(let i=0; i < e.target.classList.length; i++) {
+      if(e.target.classList[i] === 'taskNameDisplay') {
         const selectedList = mainList.find(list => list.id === selectedListId);
         const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
         selectedTask.complete = e.target.checked;
@@ -141,6 +141,7 @@ ListViewForm.addEventListener('submit', e => {
   selectedList.tasks.push(task)
   saveRender()
   document.querySelector('.listViewerFooterAddNewList').value = '';
+  location.reload()
 });
 
 function createTask(name) {
